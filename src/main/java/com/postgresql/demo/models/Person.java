@@ -1,30 +1,30 @@
 package com.postgresql.demo.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
 @Table(name = "my_table")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Person {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="id")
     private int id;
+    @Column(name="nume")
     private String nume;
+    @Column(name="prenume")
     private String prenume;
-
-    public Person(long id, String nume, String prenume) {
-        this.id = id;
-        this.nume = nume;
-        this.prenume = prenume;
-    }
 
     public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
